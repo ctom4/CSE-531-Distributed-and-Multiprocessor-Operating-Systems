@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+message MsgRequest {
+	int32 id = 1;
+	string interface = 2;
+	int32 money = 3;
+	int32 clock = 4;
+	int32 from_customer = 5;
+	int32 from_branch = 6;
+}
+
+message MsgResponse {
+	string interface = 1;
+	string result = 2;
+	int32 money = 3;
+	int32 clock = 4;
+	int32 from_customer = 5;
+	int32 from_branch = 6;
+}
+
+service Branch {
+	rpc MsgDelivery(MsgRequest) returns (MsgResponse) {}
+	rpc MsgPropagation(MsgRequest) returns (MsgResponse) {}
+}
